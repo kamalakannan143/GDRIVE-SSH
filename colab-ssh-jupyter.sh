@@ -4,7 +4,7 @@ unzip ngrok-stable-linux-amd64.zip
 read -p 'Enter the authtoken from ngrok :' authtoken
 ./ngrok authtoken $authtoken  #for example ZT64bWYnXTAsJej4FNFTdsjhsuAQqKqZHn2Sh4g2sfAD
 ./ngrok tcp 22 &
-apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server pwgen > /dev/null
+apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server > /dev/null
 mkdir -p /var/run/sshd
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc && echo "export LD_LIBRARY_PATH" >> /root/.bashrc
