@@ -4,13 +4,16 @@ unzip ngrok-stable-linux-amd64.zip
 read -p 'Enter the authtoken from ngrok :' authtoken
 ./ngrok authtoken $authtoken  #for example ZT64bWYnXTAsJej4FNFTdsjhsuAQqKqZHn2Sh4g2sfAD
 ./ngrok tcp 22 &
-apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server > /dev/null
-mkdir -p /var/run/sshd
+apt isntall update -y && apt install ssh -y && apt --full-upgrade -y
+#apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server > /dev/null
+#mkdir -p /var/run/sshd
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc && echo "export LD_LIBRARY_PATH" >> /root/.bashrc
-/usr/sbin/sshd -D &
+/etc/init.d/ssh start && /etc/init.d/ssh status
+#/usr/sbin/sshd -D &
 mkdir /root/.ssh
 read -p "run 'ssh-keygen' on your local pc and \ncopy paste the content of ~/.ssh/id_rsa.pub file" rsa # for example https://imgur.com/a/z62timq
+##check this below
 echo $rsa >> /root/.ssh/authorized_keys
 echo "You can connect to colab server on terminal with following command"
 curl -s http://localhost:4040/api/tunnels | python3 -c \
