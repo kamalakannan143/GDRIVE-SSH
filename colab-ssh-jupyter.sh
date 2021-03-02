@@ -4,7 +4,7 @@ unzip ngrok-stable-linux-amd64.zip
 read -p 'Enter the authtoken from ngrok :' authtoken
 ./ngrok authtoken $authtoken  #for example ZT64bWYnXTAsJej4FNFTdsjhsuAQqKqZHn2Sh4g2sfAD
 ./ngrok tcp 22 &
-apt isntall update -y && apt install ssh -y && apt --full-upgrade -y
+apt install update -y && apt install ssh -y && apt --full-upgrade -y
 #apt-get install -qq -o=Dpkg::Use-Pty=0 openssh-server > /dev/null
 #mkdir -p /var/run/sshd
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
